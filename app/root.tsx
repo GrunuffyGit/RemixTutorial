@@ -2,6 +2,8 @@ import {
   Form,
   Links,
   Meta,
+  Outlet,
+  /* <Outlet /> component acts as a placeholder for rendering child routes */
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
@@ -64,7 +66,10 @@ export default function App() {
             </ul>
           </nav>
         </div>
-
+        <div id="detail">
+          <Outlet />
+          {/* This is where children route components will render */}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
