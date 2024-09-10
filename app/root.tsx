@@ -15,7 +15,7 @@ import type { LinksFunction } from "@remix-run/node";
 /* LinksFunction is a type in remix where a function returns an array of object that defines links
 such as stylesheet that should be included in the HTML */
 import appStylesHref from "./app.css?url";
-import { getContacts } from "./data";
+import { createEmptyContact, getContacts } from "./data";
 /* importing the stylesheet as a url
 `?url` is a query paramenter that tells webpack that to import as a url instead of a module
 */
@@ -40,6 +40,15 @@ export const loader = async() => {
   */
   const contacts = await getContacts();
   return json({contacts});
+}
+
+export const action = async () => {
+  /*  `action` is a special function in Remix. `action` handles form submissions and other POST request.
+  This function will be called when a user submits a form that's in the same file as the action function.
+  Data returned can be passed into the component using the useActionData hook. 
+  */
+    const contact = await createEmptyContact();
+    return json({contact});
 }
 
 export default function App() {
