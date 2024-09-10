@@ -5,6 +5,26 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import type { LinksFunction } from "@remix-run/node";
+/* LinksFunction is a type in remix where a function returns an array of object that defines links
+such as stylesheet that should be included in the HTML */
+import appStylesHref from "./app.css?url";
+/* importing the stylesheet as a url
+`?url` is a query paramenter that tells webpack that to import as a url instead of a module
+*/
+
+export const links: LinksFunction = () => [
+  /* `links` is a special function in Remix. Remix automatically recognizes this function.
+  It will call this function during server-side rendering to get a list of link tags that 
+  should be included in the <head> section of HTML document.
+
+  In this case, it is returning an array of objects. 
+  This object has two properties:
+    - rel: relationship of the link which it to a stylesheet
+    - href: the url
+  */
+  { rel: "stylesheet", href: appStylesHref },
+];
 
 export default function App() {
   return (
