@@ -15,10 +15,10 @@ import type { LinksFunction } from "@remix-run/node";
 /* LinksFunction is a type in remix where a function returns an array of object that defines links
 such as stylesheet that should be included in the HTML */
 import appStylesHref from "./app.css?url";
-import { createEmptyContact, getContacts } from "./data";
 /* importing the stylesheet as a url
 `?url` is a query paramenter that tells webpack that to import as a url instead of a module
 */
+import { createEmptyContact, getContacts } from "./data";
 
 export const links: LinksFunction = () => [
   /* `links` is a special function in Remix. Remix automatically recognizes this function.
